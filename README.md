@@ -8,7 +8,7 @@ To begin, use `docker-compose up -d`
 
 View your new Hasura GraphQL Engine Console at [http://localhost:8080](http://localhost:8080) (admin secret from docker-compose.yaml: `adminsecret`)
 
-_Note_ To end a session, use `docker-compose down`
+*Note*: To end a session, use `docker-compose down -v`
 
 In case there is difficulty with Docker locally, use a free Heroku deployment instead:
 
@@ -38,7 +38,7 @@ psql -U postgres < chinook.sql
 
 ```
 
-_Note_ You can find `<postgres-container-ID>` with `docker ps`
+*Note*:  You can find `<postgres-container-ID>` with `docker ps`
 
 #### For a Heroku deployment
 
