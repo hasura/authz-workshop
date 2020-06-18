@@ -29,6 +29,10 @@ View your new Hasura GraphQL Engine Console at [http://localhost:8080](http://lo
 
 ## Loading initial data
 
+#### Via console
+- Head to the Data tab and go to the Run SQL window
+- Run northwind_ddl.sql
+- Run northwind_data.sql
 
 #### For a Heroku deployment
 
