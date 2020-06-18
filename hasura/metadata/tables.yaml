@@ -1,5 +1,8 @@
 - table:
     schema: public
+    name: api_tokens
+- table:
+    schema: public
     name: categories
   array_relationships:
   - name: products
@@ -301,6 +304,28 @@
         table:
           schema: public
           name: order_details
+  select_permissions:
+  - role: api
+    permission:
+      columns:
+      - product_id
+      - product_name
+      - supplier_id
+      - category_id
+      - quantity_per_unit
+      - unit_price
+      - units_in_stock
+      - units_on_order
+      - reorder_level
+      - discontinued
+      filter:
+        _exists:
+          _where:
+            token:
+              _eq: x-hasura-api-token
+          _table:
+            schema: public
+            name: api_tokens
 - table:
     schema: public
     name: region

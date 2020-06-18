@@ -1,3 +1,6 @@
+CREATE TABLE public.api_tokens (
+    token text NOT NULL
+);
 CREATE TABLE public.categories (
     category_id smallint NOT NULL,
     category_name character varying(15) NOT NULL,
@@ -118,6 +121,8 @@ CREATE TABLE public.us_states (
     state_abbr character varying(2),
     state_region character varying(50)
 );
+ALTER TABLE ONLY public.api_tokens
+    ADD CONSTRAINT api_tokens_pkey PRIMARY KEY (token);
 ALTER TABLE ONLY public.categories
     ADD CONSTRAINT categories_pkey PRIMARY KEY (category_id);
 ALTER TABLE ONLY public.customer_customer_demo
