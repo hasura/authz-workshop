@@ -144,3 +144,15 @@ Attributes are values that are associated with a user or resource.
 
 Hasura can use user attributes and data attributes
 
+## AWS IAM
+
+- Action
+- Resource
+- Condition
+
+## GCP IAM
+
+https://hasura.io/blog/authorization-rules-for-multi-tenant-system-google-cloud/
+
+- Every resource type has a role: Access to Google cloud storage buckets is controlled using storage_admin, storage_editor, storage_viewer roles
+- Every resource instance also has a role: Each bucket has a storage_admin, storage_editor, storage_viewer role associated with it 
