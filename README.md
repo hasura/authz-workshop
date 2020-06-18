@@ -2,58 +2,66 @@
 
 ## Getting started
 
-You will work with local Docker containers for this tutorial; see the services "postgres" and "graphql-engine" in `docker-compose.yaml`
-
-To begin, use `docker-compose up -d`
-
-View your new Hasura GraphQL Engine Console at [http://localhost:8080](http://localhost:8080) (admin secret from docker-compose.yaml: `adminsecret`)
-
-*Note*: To end a session, use `docker-compose down -v`
-
-In case there is difficulty with Docker locally, use a free Heroku deployment instead:
+We will work with your Heroku app, if you haven't created a Heroku app already then you can deploy using:
 
 [![Deploy to
 Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/hasura/graphql-engine-heroku)
 
 ![Create New App - Heroku](https://graphql-engine-cdn.hasura.io/heroku-repo/assets/create_new_app_heroku_3.png)
 
+Add admin secret: From the Heroku app dashboard (`dashboard.heroku.com/apps/<my-app-name>`), navigate to the Settings tab -> Reveal config vars. Add `HASURA_GRAPHQL_ADMIN_SECRET: adminsecret` 
+
+> In case you prefer to work locally with docker containers instead:
+
+> Use `docker-compose up -d`
+
+> View your new Hasura GraphQL Engine Console at [http://localhost:8080](http://localhost:8080) (admin secret from docker-compose.yaml: `adminsecret`)
+
+> *Note*: To end a session, use `docker-compose down -v`
+
 
 ## Loading initial data
 
-#### For local Docker setup
-
-Use the following command to set up initial tables and data into your postgres container:
-
-```
-psql postgres://postgres:mypassword@localhost:6432/postgres < chinook.sql
-
-```
-
-If you do not have `psql` available, you can copy the chinook.sql file to the postgres container and execute the `psql` command via inside it:
-
-```
-docker cp chinook.sql <postgres-container-ID>:/
-docker exec -ti <postgres-container-ID> /bin/bash
-psql -U postgres < chinook.sql
-
-```
-
-*Note*:  You can find `<postgres-container-ID>` with `docker ps`
 
 #### For a Heroku deployment
 
 From the Heroku app dashboard (`dashboard.heroku.com/apps/<my-app-name>`), navigate to the Settings tab -> Reveal config vars -> DATABASE_URL. Use the following command:
 
 ```
-psql <DATABASE_URL> < chinook.sql
+psql <DATABASE_URL> < northwind_ddl.sql
+psql <DATABASE_URL> < northwind_data.sql
 
 ```
 
 or, lacking psql, use the following (might need to run `heroku login` first):
 
 ```
-heroku pg:psql -a <my-app-name> < chinook.sql
+heroku pg:psql -a <my-app-name> < northwind_ddl.sql
+heroku pg:psql -a <my-app-name> < northwind_data.sql
 
+```
+
+#### For local Docker setup
+
+Use the following command to set up initial tables and data into your postgres container:
+
+```
+psql postgres://postgres:mypassword@localhost:6432/postgres < northwind_ddl.sql 
+psql postgres://postgres:mypassword@localhost:6432/postgres < northwind_data.sql 
+
+```
+
+If you do not have `psql` available, you can copy the `northwind_ddl.sql` and `northwind_data.sql` file to the postgres container and execute the `psql` command via inside it:
+
+
+*Note*:  You can find `<postgres-container-ID>` with `docker ps`
+
+```
+docker cp northwind_ddl.sql <postgres-container-ID>:/
+docker cp northwind_data.sql <postgres-container-ID>:/
+docker exec -ti <postgres-container-ID> /bin/bash
+psql -U postgres < northwind_ddl.sql
+psql -U postgres < northwind_data.sql
 ```
 
 ## Track tables and foreign-key relations
