@@ -154,7 +154,6 @@ Hasura can use user attributes and data attributes
 
 https://hasura.io/blog/authorization-rules-for-multi-tenant-system-google-cloud/
 
-- Every resource type has a role: Access to Google cloud storage buckets is controlled using storage_admin, storage_editor, storage_viewer roles
 - Every resource instance also has a role: Each bucket has a storage_admin, storage_editor, storage_viewer role associated with it
 
 ## Example JWT Payload
@@ -174,3 +173,11 @@ https://hasura.io/blog/authorization-rules-for-multi-tenant-system-google-cloud/
 ```
 
 [Encrypt with jwtsecret here](https://jwt.io/)
+- Every resource instance also has a role: Each bucket has a storage_admin, storage_editor, storage_viewer role associated with it 
+
+
+## Use this key
+
+```
+HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS256", "key": "myjwtsecretkey111111111111111111111111111111111"}'
+```
