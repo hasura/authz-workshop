@@ -40,7 +40,7 @@ psql <DATABASE_URL> < northwind_data.sql
 
 ```
 
-or, lacking psql, use the following (might need to run `heroku login` first):
+or, lacking psql, use the following with the [heroku CLI](https://devcenter.heroku.com/articles/heroku-cli): (might need to run `heroku login` first):
 
 ```
 heroku pg:psql -a <my-app-name> < northwind_ddl.sql
