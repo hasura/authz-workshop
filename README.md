@@ -9,15 +9,22 @@ Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?
 
 ![Create New App - Heroku](https://graphql-engine-cdn.hasura.io/heroku-repo/assets/create_new_app_heroku_3.png)
 
-Add admin secret: From the Heroku app dashboard (`dashboard.heroku.com/apps/<my-app-name>`), navigate to the Settings tab -> Reveal config vars. Add `HASURA_GRAPHQL_ADMIN_SECRET: adminsecret` 
+#### Add admin secret
 
-> In case you prefer to work locally with docker containers instead:
+1. From the Heroku app dashboard (`dashboard.heroku.com/apps/<my-app-name>`), navigate to the Settings tab -> Reveal config vars. 
 
-> Use `docker-compose up -d`
+2. Add a new config var:  `HASURA_GRAPHQL_ADMIN_SECRET: adminsecret` 
 
-> View your new Hasura GraphQL Engine Console at [http://localhost:8080](http://localhost:8080) (admin secret from docker-compose.yaml: `adminsecret`)
 
-> *Note*: To end a session, use `docker-compose down -v`
+#### For local Docker setup
+
+In case you prefer to work locally with docker containers instead:
+
+Use `docker-compose up -d`
+
+View your new Hasura GraphQL Engine Console at [http://localhost:8080](http://localhost:8080) (admin secret from docker-compose.yaml: `adminsecret`)
+
+*Note*: To end a session, use `docker-compose down -v`
 
 
 ## Loading initial data
