@@ -80,17 +80,10 @@
     schema: public
     name: employees
   object_relationships:
-  - name: employee
+  - name: manager
     using:
       foreign_key_constraint_on: reports_to
   array_relationships:
-  - name: employees
-    using:
-      foreign_key_constraint_on:
-        column: reports_to
-        table:
-          schema: public
-          name: employees
   - name: employee_territories
     using:
       foreign_key_constraint_on:
@@ -105,6 +98,13 @@
         table:
           schema: public
           name: orders
+  - name: reportees
+    using:
+      foreign_key_constraint_on:
+        column: reports_to
+        table:
+          schema: public
+          name: employees
   select_permissions:
   - role: employee
     permission:
@@ -128,8 +128,11 @@
       - reports_to
       - photo_path
       filter:
-        employee_id:
-          _eq: x-hasura-employee-id
+        _or:
+        - employee_id:
+            _eq: x-hasura-employee-id
+        - reports_to:
+            _eq: x-hasura-employee-id
   update_permissions:
   - role: employee
     permission:
