@@ -173,7 +173,6 @@ https://hasura.io/blog/authorization-rules-for-multi-tenant-system-google-cloud/
 ```
 
 [Encrypt with jwtsecret here](https://jwt.io/)
-- Every resource instance also has a role: Each bucket has a storage_admin, storage_editor, storage_viewer role associated with it 
 
 
 ## Use this key
