@@ -1,3 +1,4 @@
+# Authorization workshop
 
 ## Dataset
 
@@ -43,3 +44,17 @@ Rules:
 Rules:
 
 1. Only consumers with valid api key can see the products table
+
+## RBAC
+
+A role is a collection of permissions. Permissions determine what operations are allowed on a resource. 
+When you grant a role to a user, all permissions in the role are automatically granted to the user.
+
+Hasura has role-based schemas.
+
+## ABAC
+
+Attributes are values that are associated with a user or resource. 
+
+Hasura can use user attributes and data attributes
+
