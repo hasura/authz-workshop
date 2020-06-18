@@ -22,5 +22,6 @@ services:
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ADMIN_SECRET: "adminsecret"
+      HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS256", "key": "myjwtsecretkey111111111111111111111111111111111"}'
 volumes:
   db_data:
