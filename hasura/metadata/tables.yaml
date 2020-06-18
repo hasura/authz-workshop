@@ -105,6 +105,30 @@
         table:
           schema: public
           name: employees
+  insert_permissions:
+  - role: hr
+    permission:
+      check: {}
+      columns:
+      - photo
+      - birth_date
+      - hire_date
+      - employee_id
+      - reports_to
+      - notes
+      - address
+      - city
+      - country
+      - extension
+      - first_name
+      - home_phone
+      - last_name
+      - photo_path
+      - postal_code
+      - region
+      - title
+      - title_of_courtesy
+      backend_only: false
   select_permissions:
   - role: employee
     permission:
@@ -133,6 +157,28 @@
             _eq: x-hasura-employee-id
         - reports_to:
             _eq: x-hasura-employee-id
+  - role: hr
+    permission:
+      columns:
+      - employee_id
+      - last_name
+      - first_name
+      - title
+      - title_of_courtesy
+      - birth_date
+      - hire_date
+      - address
+      - city
+      - region
+      - postal_code
+      - country
+      - home_phone
+      - extension
+      - photo
+      - notes
+      - reports_to
+      - photo_path
+      filter: {}
   update_permissions:
   - role: employee
     permission:
@@ -159,6 +205,33 @@
       check:
         employee_id:
           _eq: x-hasura-employee-id
+  - role: hr
+    permission:
+      columns:
+      - photo
+      - birth_date
+      - hire_date
+      - employee_id
+      - reports_to
+      - notes
+      - address
+      - city
+      - country
+      - extension
+      - first_name
+      - home_phone
+      - last_name
+      - photo_path
+      - postal_code
+      - region
+      - title
+      - title_of_courtesy
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: hr
+    permission:
+      filter: {}
 - table:
     schema: public
     name: order_details
