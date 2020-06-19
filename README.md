@@ -122,7 +122,7 @@ Rules:
 2. Employee can see the information of their reportees.
 3. HRs can see and edit information of all employees
 
-## Public facing app
+## Public facing API
 
 **Table**: products
 **role**: api
@@ -158,7 +158,13 @@ https://hasura.io/blog/authorization-rules-for-multi-tenant-system-google-cloud/
 - Every resource instance also has a role: Each bucket has a storage_admin, storage_editor, storage_viewer role associated with it 
 
 
-## Use this key
+## JWT Integration
 
+1. Add environment variable:
+
+```
 HASURA_GRAPHQL_JWT_SECRET: {"type": "HS256", "key": "myjwtsecretkey111111111111111111111111111111111"}
+```
+
+2. Head to jwt.io and create tokens
 
